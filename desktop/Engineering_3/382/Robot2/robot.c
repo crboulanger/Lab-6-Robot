@@ -4,7 +4,7 @@
  *  Created on: Nov 19, 2013
  *      Author: C15Christopher.Boula
  */
-#include "./desktop/Engineering_3/382/Robot/robot.h"
+#include "robot.h"
 #include <msp430.h>
 
 void initializeMotor(){
@@ -25,9 +25,9 @@ void initializeMotor(){
                 TA1CCR0 = 100;
                 TA0CCR0 = 100;
 
-                TA0CCR1 = 75;
-                TA1CCR1 = 75;
-                TA1CCR2 = 0;
+                TA0CCR1 = 55;
+                TA1CCR1 = 60;
+                TA1CCR2 = 65;
 
                 TA0CCTL1 |= OUTMOD_7;                // set to RESET/SET mode
                 TA1CCTL1 |= OUTMOD_7;
@@ -41,53 +41,86 @@ void moveRobot(unsigned char direction){
         switch (direction){
 
         case STOP:
+        	    P1DIR |= BIT2;
+        	    P1SEL |= BIT2;
+        	    P2DIR |= BIT1|BIT4;
+        	    P2SEL |= BIT1|BIT4;
+
                 TA1CCR1 = 0;
                 TA0CCR1 = 0;
                 TA1CCR2 = 0;
                 break;
 
         case FORWARD:
-                TA0CCR1 = 75;
-                TA1CCR1 = 75;
+        		P1DIR |= BIT2;
+        	    P1SEL |= BIT2;
+        	    P2DIR |= BIT1|BIT4;
+        	    P2SEL |= BIT1|BIT4;
+
+                TA0CCR1 = 60;
+                TA1CCR1 = 55;
                 TA1CCR2 = 0;
                 break;
 
         case BACKWARD:
-                TA1CCR1 = 0;
+        	    P2DIR &= ~BIT4;
+        	    P2SEL &= ~BIT4;
+
+        	    TA1CCR1 = 0;
                 TA0CCR1 = 0;
-                TA1CCR2 = 45;
+                TA1CCR2 = 65;
                 break;
 
         case BIGRIGHT:
-                TA1CCR1 = 75;
+        		P1DIR |= BIT2;
+        	    P1SEL |= BIT2;
+        	    P2DIR |= BIT1|BIT4;
+        	    P2SEL |= BIT1|BIT4;
+
+                TA1CCR1 = 55;
                 TA0CCR1 = 0;
                 TA1CCR2 = 0;
                 _delay_cycles(400000);
-                TA0CCR1 = 75;
+                TA0CCR1 = 60;
                 break;
 
         case SMALLRIGHT:
-                TA1CCR1 = 75;
+        		P1DIR |= BIT2;
+        	    P1SEL |= BIT2;
+        	    P2DIR |= BIT1|BIT4;
+        	    P2SEL |= BIT1|BIT4;
+
+                TA1CCR1 = 55;
                 TA0CCR1 = 0;
                 TA1CCR2 = 0;
                 _delay_cycles(200000);
-                TA0CCR1 = 75;
+                TA0CCR1 = 60;
                 break;
 
         case BIGLEFT:
-                TA0CCR1 = 75;
+        		P1DIR |= BIT2;
+        	    P1SEL |= BIT2;
+        	    P2DIR |= BIT1|BIT4;
+        	    P2SEL |= BIT1|BIT4;
+
+                TA0CCR1 = 60;
                 TA1CCR1 = 0;
                 TA1CCR2 = 0;
                 _delay_cycles(400000);
-                TA1CCR1 = 75;
+                TA1CCR1 = 55;
                 break;
 
         case SMALLLEFT:
-                TA0CCR1 = 75;
+        		P1DIR |= BIT2;
+        	    P1SEL |= BIT2;
+        	    P2DIR |= BIT1|BIT4;
+        	    P2SEL |= BIT1|BIT4;
+
+                TA0CCR1 = 60;
                 TA1CCR1 = 0;
                 TA1CCR2 = 0;
                 _delay_cycles(200000);
-                TA1CCR1 = 75;
+                TA1CCR1 = 55;
                 break;
         }
 }
