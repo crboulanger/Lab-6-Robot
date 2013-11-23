@@ -3,7 +3,7 @@ Lab-6-Robot
 
 This is my repository for my moving robot libraries
 
-Welcome!
+##Welcome!
 
 Navigate to the final robot motion library:
 desktop/Engineering_3/382/Robot2
