@@ -41,12 +41,12 @@ void moveRobot(unsigned char direction){
         switch (direction){
 
         case STOP:
-        	    P1DIR |= BIT2;
+        		P1DIR |= BIT2;	//I reset the bits each time because backwards requires a different bit set configuration
         	    P1SEL |= BIT2;
         	    P2DIR |= BIT1|BIT4;
         	    P2SEL |= BIT1|BIT4;
 
-                TA1CCR1 = 0;
+        	    TA1CCR1 = 0;	//no duty cycle>>no movement
                 TA0CCR1 = 0;
                 TA1CCR2 = 0;
                 break;

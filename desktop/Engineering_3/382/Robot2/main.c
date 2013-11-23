@@ -7,13 +7,13 @@ int main(void) {
     WDTCTL = WDTPW | WDTHOLD;        // Stop watchdog timer
 
 
-            initializeMotor();
+            initializeMotor();		//set up pulse width modulation
             while(1){
 
-            	    moveRobot(STOP);
+            	    moveRobot(STOP);		//each movement calls a specific direction for a given time #cycles
             	    _delay_cycles(2000000);
 
-                    moveRobot(BACKWARD);
+                    moveRobot(BACKWARD);	//movements will loop until robot is turned off while(1)
                     _delay_cycles(2000000);
 
                     moveRobot(STOP);
