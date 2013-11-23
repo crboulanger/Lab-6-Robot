@@ -10,6 +10,9 @@ int main(void) {
             initializeMotor();		//set up pulse width modulation
             while(1){
 
+            		//moveRobot('directional command')	//see robot.h for list of commands
+            		//_delay_cycles(# of cycles)
+
             	    moveRobot(STOP);		//each movement calls a specific direction for a given time #cycles
             	    _delay_cycles(2000000);
 

@@ -57,8 +57,8 @@ void moveRobot(unsigned char direction){
         	    P2DIR |= BIT1|BIT4;
         	    P2SEL |= BIT1|BIT4;
 
-                TA0CCR1 = 60;
-                TA1CCR1 = 55;
+                TA0CCR1 = 60;	//the left wheel is faster in code because
+                TA1CCR1 = 55;	//for some reason my robot's right motor goes faster in real life.
                 TA1CCR2 = 0;
                 break;
 
